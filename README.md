@@ -1,15 +1,16 @@
-# 0. Cube RPC
+# Cube RPC
 
 This RPC protocal is a half-duplex protocal, it is simple and easy to develop, easy to debug.
 
-It is also high performance, there are already some applications in this real world. For example: [Android-Gems](http://www.android-gems.com/)
+It is also high performance.
+
+There are already some applications in this real world. For example: [Android-Gems](http://www.android-gems.com/)
 
 ### Serialize protocal
 
 This protocal choose [BinPack](http://binpack.liaohuqiu.net/) as the serialize protocal. It is simple and very fast.
 
-# 1. Communication mechanism
-
+# Communication mechanism
 
 ### Messages
 
@@ -22,6 +23,8 @@ There are four kinds of message:
 
 
 ### Call process
+
+* It is half-duplex.
 
     ```
                 
@@ -65,7 +68,13 @@ The other side will close the socket connection after recieve the `Close` messag
 
 The sponser close the connection after detect the socket has been disconnected.
 
-# 2. Message structure
+### Proxy
+
+* From the Server side, it looks like Client.
+
+* From the Client side, it looks like Server.
+
+# Message structure
 
 All the messages contain a header, but only `Query` and `Answer` contain a body.
 
@@ -151,8 +160,10 @@ If the answer is a normal response, status is 0, else status is none-zero and da
 |detail       | dict      | |
 
 
-# 3. Implements
+# Implements
 
 * Python:  https://github.com/liaohuqiu/cube-rpc-python
 * C++: Will open source soon.
 * JAVA: Will open source soon.
+
+Welcome to implement for more language.
